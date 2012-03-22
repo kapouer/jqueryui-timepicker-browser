@@ -1,0 +1,14 @@
+{
+  "author": "Trent Richardson",
+  "name": "jqueryui-timepicker-browser",
+  "description": "jqueryui timepicker addon for datepicker",
+  "version": "1.0.0-1",
+  "homepage": "http://trentrichardson.com/examples/timepicker/",
+  "directories": {
+    "javascripts": "./js",
+    "stylesheets": "./css"
+  },
+  "dependencies": {
+    "jqueryui-browser": ">=1.8"
+  }
+}
