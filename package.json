@@ -2,8 +2,14 @@
   "author": "Trent Richardson",
   "name": "jqueryui-timepicker-browser",
   "description": "jqueryui timepicker addon for datepicker",
-  "version": "1.0.0-1",
+  "version": "1.0.1-1",
   "homepage": "http://trentrichardson.com/examples/timepicker/",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://trentrichardson.com/Impromptu/MIT-LICENSE.txt"
+    }
+  ],
   "directories": {
     "javascripts": "./js",
     "stylesheets": "./css"
