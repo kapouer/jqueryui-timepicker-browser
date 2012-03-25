@@ -69,6 +69,8 @@ function Timepicker() {
 		second: 0,
 		millisec: 0,
 		timezone: null,
+		useLocalTimezone: false,
+		defaultTimezone: "+0000",
 		hourMin: 0,
 		minuteMin: 0,
 		secondMin: 0,
@@ -111,6 +113,7 @@ $.extend(Timepicker.prototype, {
 	second: 0,
 	millisec: 0,
 	timezone: null,
+	defaultTimezone: "+0000",
 	hourMinOriginal: null,
 	minuteMinOriginal: null,
 	secondMinOriginal: null,
@@ -448,9 +451,14 @@ $.extend(Timepicker.prototype, {
 			if (typeof this.timezone != "undefined" && this.timezone != null && this.timezone != "") {
 				this.timezone_select.val(this.timezone);
 			} else {
-				selectLocalTimeZone(tp_inst);
+				if (typeof this.hour != "undefined" && this.hour != null && this.hour != "") {
+					this.timezone_select.val(o.defaultTimezone);
+				} else {
+					selectLocalTimeZone(tp_inst);
+				}
 			}
 			this.timezone_select.change(function() {
+				tp_inst._defaults.useLocalTimezone = false;
 				tp_inst._onTimeChange();
 			});
 
@@ -785,8 +793,6 @@ $.extend(Timepicker.prototype, {
 	//########################################################################
 	_updateDateTime: function(dp_inst) {
 		dp_inst = this.inst || dp_inst;
-		selectLocalTimeZone(this);
-		this._onTimeChange();
 		var dt = $.datepicker._daylightSavingAdjust(new Date(dp_inst.selectedYear, dp_inst.selectedMonth, dp_inst.selectedDay)),
 			dateFmt = $.datepicker._get(dp_inst, 'dateFormat'),
 			formatCfg = $.datepicker._getFormatConfig(dp_inst),
@@ -1063,7 +1069,15 @@ $.datepicker._updateDatepicker = function(inst) {
 
 		// Reload the time control when changing something in the input text field.
 		var tp_inst = this._get(inst, 'timepicker');
-		if(tp_inst) tp_inst._addTimePicker(inst);
+		if(tp_inst) {
+			tp_inst._addTimePicker(inst);
+
+			if (tp_inst._defaults.useLocalTimezone) { //checks daylight saving with the new date.
+				var date = new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay, 12);
+				selectLocalTimeZone(tp_inst, date);
+				tp_inst._onTimeChange();
+			}
+		}
 	}
 };
 
@@ -1404,11 +1418,10 @@ var parseDateTimeInternal = function(dateFormat, timeFormat, dateTimeString, dat
 //#######################################################################################
 // Internal function to set timezone_select to the local timezone
 //#######################################################################################
-var selectLocalTimeZone = function(tp_inst)
+var selectLocalTimeZone = function(tp_inst, date)
 {
 	if (tp_inst && tp_inst.timezone_select) {
-		var date_inst = tp_inst.inst;
-		var now = (date_inst && date_inst.selectedYear && date_inst.selectedMonth && date_inst.selectedDay) ? new Date(date_inst.selectedYear, date_inst.selectedMonth, date_inst.selectedDay) : new Date();
+		var now = typeof date !== 'undefined' ? date : new Date();
 		var tzoffset = now.getTimezoneOffset(); // If +0100, returns -60
 		var tzsign = tzoffset > 0 ? '-' : '+';
 		tzoffset = Math.abs(tzoffset);
