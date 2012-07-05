@@ -2,7 +2,7 @@
   "author": "Trent Richardson",
   "name": "jqueryui-timepicker-browser",
   "description": "jqueryui timepicker addon for datepicker",
-  "version": "1.0.1-4",
+  "version": "1.0.1-6",
   "homepage": "http://trentrichardson.com/examples/timepicker/",
   "licenses": [
     {
@@ -14,6 +14,7 @@
     "javascripts": "./js",
     "stylesheets": "./css"
   },
+  "main": "./index.js",
   "dependencies": {
     "jqueryui-browser": ">=1.8"
   }
