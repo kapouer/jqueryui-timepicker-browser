@@ -11,10 +11,10 @@
 		timezoneText: 'Fus horari',
 		currentText: 'Ara',
 		closeText: 'Tancar',
-		timeFormat: 'hh:mm',
+		timeFormat: 'HH:mm',
 		amNames: ['AM', 'A'],
 		pmNames: ['PM', 'P'],
-		ampm: false
+		isRTL: false
 	};
 	$.timepicker.setDefaults($.timepicker.regional['ca']);
 })(jQuery);

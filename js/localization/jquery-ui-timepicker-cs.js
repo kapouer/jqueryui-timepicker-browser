@@ -11,10 +11,10 @@
 		timezoneText: 'Časové pásmo',
 		currentText: 'Nyní',
 		closeText: 'Zavřít',
-		timeFormat: 'h:m',
+		timeFormat: 'HH:mm',
 		amNames: ['dop.', 'AM', 'A'],
 		pmNames: ['odp.', 'PM', 'P'],
-		ampm: false
+		isRTL: false
 	};
 	$.timepicker.setDefaults($.timepicker.regional['cs']);
 })(jQuery);

@@ -11,10 +11,10 @@
 		timezoneText: 'Laiko zona',
 		currentText: 'Dabar',
 		closeText: 'Uždaryti',
-		timeFormat: 'hh:mm',
+		timeFormat: 'HH:mm',
 		amNames: ['priešpiet', 'AM', 'A'],
 		pmNames: ['popiet', 'PM', 'P'],
-		ampm: false
+		isRTL: false
 	};
 	$.timepicker.setDefaults($.timepicker.regional['lt']);
 })(jQuery);

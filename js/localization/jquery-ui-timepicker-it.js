@@ -11,10 +11,10 @@
         timezoneText: 'Fuso orario',
         currentText: 'Adesso',
         closeText: 'Chiudi',
-        timeFormat: 'hh:mm',
+        timeFormat: 'HH:mm',
         amNames: ['m.', 'AM', 'A'],
         pmNames: ['p.', 'PM', 'P'],
-        ampm: false
+        isRTL: false
     };
     $.timepicker.setDefaults($.timepicker.regional['it']);
 })(jQuery);

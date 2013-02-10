@@ -11,10 +11,10 @@
 		timezoneText: 'Tidszon',
 		currentText: 'Nu',
 		closeText: 'Stäng',
-		timeFormat: 'hh:mm',
+		timeFormat: 'HH:mm',
 		amNames: ['AM', 'A'],
 		pmNames: ['PM', 'P'],
-		ampm: false
+		isRTL: false
 	};
 	$.timepicker.setDefaults($.timepicker.regional['sv']);
 })(jQuery);
